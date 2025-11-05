@@ -1,0 +1,16 @@
+# Every Now & Then - Cron Schedule
+# Format: minute hour day month weekday command
+#
+# Examples:
+# 0 9 * * * - Every day at 9 AM
+# 0 */6 * * * - Every 6 hours
+# 0 0 * * 0 - Every Sunday at midnight
+# */15 * * * * - Every 15 minutes
+#
+# See: https://crontab.guru/ for cron schedule expressions
+
+# Every day at 0:00 AM run multiple agentic archive for both companies
+35 0 6 * * . /etc/environment; /app/scripts/multiple_agentic_archiver/run.sh >> /var/log/cron.log 2>&1
+
+# Every 2nd day of the month at 6:00 AM run vendus reports for both companies
+35 0 6 * * . /etc/environment; /app/scripts/multiple_vendus_reports/run.sh >> /var/log/cron.log 2>&1
