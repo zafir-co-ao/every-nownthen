@@ -21,7 +21,7 @@ run_archiver() {
     ROOT_FOLDER_ID=$(eval echo \$${company}_ROOT_FOLDER_ID)
     VENDUS_API_KEY=$(eval echo \$${company}_VENDUS_API_KEY)
     COMPANY_NAME=$(eval echo \$${company}_COMPANY_NAME)
-    COMPANY_FISCAL_ANY=$(eval echo \$${company}_COMPANY_FISCAL_ANY)
+    COMPANY_FISCAL_ID=$(eval echo \$${company}_COMPANY_FISCAL_ID)
 
     # Validate required variables
     if [ -z "$ROOT_FOLDER_ID" ]; then
@@ -39,15 +39,15 @@ run_archiver() {
         return 1
     fi
 
-    if [ -z "$COMPANY_FISCAL_ANY" ]; then
-        echo "ERROR: ${company}_COMPANY_FISCAL_ANY is not set"
+    if [ -z "$COMPANY_FISCAL_ID" ]; then
+        echo "ERROR: ${company}_COMPANY_FISCAL_ID is not set"
         return 1
     fi
 
     echo "Configuration:"
     echo "  ROOT_FOLDER_ID: $ROOT_FOLDER_ID"
     echo "  COMPANY_NAME: $COMPANY_NAME"
-    echo "  COMPANY_FISCAL_ANY: $COMPANY_FISCAL_ANY"
+    echo "  COMPANY_FISCAL_ID: $COMPANY_FISCAL_ID"
     echo "  VENDUS_API_KEY: [REDACTED]"
     echo ""
 
@@ -55,7 +55,7 @@ run_archiver() {
     ROOT_FOLDER_ID="$ROOT_FOLDER_ID" \
     VENDUS_API_KEY="$VENDUS_API_KEY" \
     COMPANY_NAME="$COMPANY_NAME" \
-    COMPANY_FISCAL_ANY="$COMPANY_FISCAL_ANY" \
+    COMPANY_FISCAL_ID="$COMPANY_FISCAL_ID" \
     agentic-archive
 
     local exit_code=$?
